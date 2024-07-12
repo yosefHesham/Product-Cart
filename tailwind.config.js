@@ -6,6 +6,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        inter: ['Inter', 'sans-serif'],
+      },
       colors: {
         primary: " #1D364D",
         productSubTitle:"#B9BBBF",
@@ -19,7 +22,17 @@ export default {
         iconBg:"#EDF0F8",
         iconBgSecondary:"#FFF0F0",
         customRed:"#D75951",
-        customLightRed:"#D46F77"
+        customLightRed:"#D46F77",
+        divider:"#E4E4E4",
+        size:"#726C6C",
+        cartBg:"#F5F1EE",
+        shirts:{ 
+          yellow:"#FFAC3C",
+          blue:"#0078B5",
+          red:" #BB0043",
+          purple:"#5D21B7"
+
+        }
 
       }
     },
