@@ -15,6 +15,7 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
     slidesToScroll: 1,
     initialSlide: 0,
     arrows: true,
+    accessibility: false,
     responsive: [
       {
         breakpoint: 1024,
