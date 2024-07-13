@@ -26,6 +26,7 @@ export default {
         divider:"#E4E4E4",
         size:"#726C6C",
         cartBg:"#F5F1EE",
+        bgGradient:"#CDCDCD",
         shirts:{ 
           orange:"#FFAC3C",
           blue:"#0078B5",

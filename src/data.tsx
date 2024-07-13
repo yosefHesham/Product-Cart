@@ -3,50 +3,63 @@
 // if its just about one product, i would just identify each shirt with a color, with constant name and decription and price.
 export const colors = ["blue", "black", "orange", "red", "white", "purple"];
 
-export const products = [
-  {
-    name: "Polo Shirt",
-    brand: "Teixeira Design Studio",
-    color: "black",
-    price: 71.56,
-  },
-  {
-    name: "Polo Shirt",
-    brand: "Teixeira Design Studio",
-    color: "blue",
-    price: 71.56,
-  },
-  {
-    name: "Polo Shirt",
-    brand: "Teixeira Design Studio",
-    color: "orange",
-    price: 71.56,
-  },
-  {
-    name: "Polo Shirt",
-    brand: "Teixeira Design Studio",
-    color: "red",
-    price: 71.56,
-  },
-  {
-    name: "Polo Shirt",
-    brand: "Teixeira Design Studio",
-    color: "white",
-    price: 71.56,
-  },
-  {
-    name: "Polo Shirt",
-    brand: "Teixeira Design Studio",
-    color: "purple",
-    price: 71.56,
-  },
-];
+export const product = {
+  name: "Polo Shirt",
+  brand: "Teixeira Design Studio",
+  colors: ["blue", "black", "orange", "red", "white", "purple"],
+  price: 71.56,
+};
 
-export const colorMap = {
-  blue: "bg-shirts-blue",
-  orange: "bg-shirts-orange",
-  red: "bg-shirts-red",
-  purple: "bg-shirts-purple",
-  black: "bg-black",
-  white: "bg-white",
+// export const products = [
+//   {
+//     name: "Polo Shirt",
+//     brand: "Teixeira Design Studio",
+//     color: "black",
+//     price: 71.56,
+//   },
+//   {
+//     name: "Polo Shirt",
+//     brand: "Teixeira Design Studio",
+//     color: "blue",
+//     price: 71.56,
+//   },
+//   {
+//     name: "Polo Shirt",
+//     brand: "Teixeira Design Studio",
+//     color: "orange",
+//     price: 71.56,
+//   },
+//   {
+//     name: "Polo Shirt",
+//     brand: "Teixeira Design Studio",
+//     color: "red",
+//     price: 71.56,
+//   },
+//   {
+//     name: "Polo Shirt",
+//     brand: "Teixeira Design Studio",
+//     color: "white",
+//     price: 71.56,
+//   },
+//   {
+//     name: "Polo Shirt",
+//     brand: "Teixeira Design Studio",
+//     color: "purple",
+//     price: 71.56,
+//   },
+// ];
+
+interface ColorMap {
+  [key: string]: { [key: string]: string };
+}
+export const colorMap: ColorMap = {
+  blue: { bg: "bg-shirts-blue", border: "border-shirts-blue" },
+  orange: { bg: "bg-shirts-orange", border: "border-shirts-orange" },
+  red: { bg: "bg-shirts-red", border: "border-shirts-red" },
+  purple: { bg: "bg-shirts-purple", border: "border-shirts-purple" },
+  black: { bg: "bg-black", border: "border-black" },
+  white: {
+    bg: "bg-gradient-to-b from-white to-bgGradient",
+    border: "border-gradient-to-b from-white to-bgGradient",
+  },
 };

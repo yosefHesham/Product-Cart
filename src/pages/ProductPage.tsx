@@ -1,11 +1,13 @@
 import { useState } from "react";
 import CircleWithData from "../components/CircleWithData";
-import { products } from "../data";
+import { product } from "../data";
 import FeatureIcon from "../components/FeatureIcon";
+import ColorSelector from "../components/ColorSelector";
 
 const ProductPage = () => {
-  const [selectedProudct] = useState(products[0]);
-  const productImage = `../../public/assets/images/${selectedProudct.color}-shirt.svg`;
+  const [selectedColor, selectColor] = useState(product.colors[0]);
+  const selectedProduct = product;
+  const productImage = `../../public/assets/images/${selectedColor}-shirt.svg`;
   return (
     <>
       <header className="border-b w-full py-5 box-border px-20 border-divider flex justify-between items-center">
@@ -25,35 +27,59 @@ const ProductPage = () => {
         </CircleWithData>
       </header>
 
-      <main className="mt-5 px-20">
-        <section className="flex w-full justify-start">
+      <main className="mt-5  px-20">
+        <section className="flex xl:w-[70%]  mx-auto gap-12 justify-start">
           <div className="flex-1">
             <img
               src={productImage}
               alt="shirt"
-              className="w-10/12 h-[500px] border border-iconBg rounded-[16px]"
+              className=" w-[90%]  border border-iconBg rounded-[16px]"
             ></img>
           </div>
 
-          <div className="flex  flex-1 justify-between ">
-            <div>
-              <p> {selectedProudct.name}</p>
-              <p>{selectedProudct.brand}</p>
-            </div>
-            <div className="flex gap-3">
-              <FeatureIcon
-                classes="py-2 px-3"
-                iconName="heart.svg"
-                bgColor="bg-iconBgSecondary"
-              >
-                <p className="text-customLightRed font-semibold font-inter">
-                  109
+          <section>
+            <div className="flex flex-1 justify-between border-b pb-6 border-divider ">
+              <div className="font-inter">
+                <p className="font-semibold text-2xl mb-2">
+                  {selectedProduct.name}
                 </p>
-              </FeatureIcon>
-              <FeatureIcon iconName="bookmark.svg" classes="p-2" />
-              <FeatureIcon iconName="share.svg" classes="p-2" />
+                <p className="text-productSubTitle"> {selectedProduct.brand}</p>
+              </div>
+              <div className="flex gap-3">
+                <FeatureIcon
+                  classes="py-2 px-3"
+                  iconName="heart.svg"
+                  bgColor="bg-iconBgSecondary"
+                >
+                  <p className="text-customLightRed font-semibold font-inter">
+                    109
+                  </p>
+                </FeatureIcon>
+                <FeatureIcon iconName="bookmark.svg" classes="p-2" />
+                <FeatureIcon iconName="share.svg" classes="p-2" />
+              </div>
             </div>
-          </div>
+            <div className="border-b flex items-center gap-5 py-6 border-divider font-inter">
+              <p className="text-primary font-bold text-2xl">
+                ${product.price}
+              </p>
+              <p className="text-black opacity-50 line-through">
+                ${product.price + 9}{" "}
+              </p>
+            </div>
+
+            <div className="border-b py-6 border-divider font-inter">
+              <p className="font-medium text-productSubTitle">Choose a color</p>
+
+              <ColorSelector
+                colors={product.colors}
+                selectedColor={selectedColor}
+                onChange={(x) => {
+                  selectColor(x);
+                }}
+              />
+            </div>
+          </section>
         </section>
       </main>
     </>
