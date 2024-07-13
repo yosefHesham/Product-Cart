@@ -7,6 +7,7 @@ export const product = {
   name: "Polo Shirt",
   brand: "Teixeira Design Studio",
   colors: ["blue", "black", "orange", "red", "white", "purple"],
+  sizes: ["Small", "Medium", "Large", "Extra Large", "XXL"],
   price: 71.56,
 };
 
@@ -52,6 +53,7 @@ export const product = {
 interface ColorMap {
   [key: string]: { [key: string]: string };
 }
+
 export const colorMap: ColorMap = {
   blue: { bg: "bg-shirts-blue", border: "border-shirts-blue" },
   orange: { bg: "bg-shirts-orange", border: "border-shirts-orange" },

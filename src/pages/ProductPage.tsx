@@ -3,9 +3,11 @@ import CircleWithData from "../components/CircleWithData";
 import { product } from "../data";
 import FeatureIcon from "../components/FeatureIcon";
 import ColorSelector from "../components/ColorSelector";
+import SizeSelector from "../components/SizeSelector";
 
 const ProductPage = () => {
   const [selectedColor, selectColor] = useState(product.colors[0]);
+  const [selectedSize, selectSize] = useState(product.sizes[0]);
   const selectedProduct = product;
   const productImage = `../../public/assets/images/${selectedColor}-shirt.svg`;
   return (
@@ -28,7 +30,7 @@ const ProductPage = () => {
       </header>
 
       <main className="mt-5  px-20">
-        <section className="flex xl:w-[70%]  mx-auto gap-12 justify-start">
+        <section className="flex xl:w-[80%]  mx-auto gap-12 justify-start">
           <div className="flex-1">
             <img
               src={productImage}
@@ -77,6 +79,18 @@ const ProductPage = () => {
                 onChange={(x) => {
                   selectColor(x);
                 }}
+              />
+            </div>
+
+            <div className="border-b py-6 border-divider font-inter">
+              <p className="font-medium text-productSubTitle">Choose a size</p>
+
+              <SizeSelector
+                sizes={product.sizes}
+                onChange={(v) => {
+                  selectSize(v);
+                }}
+                selectedSize={selectedSize}
               />
             </div>
           </section>
