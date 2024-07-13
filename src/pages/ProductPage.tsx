@@ -1,13 +1,16 @@
 import { useState } from "react";
 import CircleWithData from "../components/CircleWithData";
-import { product } from "../data";
+import { colorMap, product } from "../data";
 import FeatureIcon from "../components/FeatureIcon";
 import ColorSelector from "../components/ColorSelector";
 import SizeSelector from "../components/SizeSelector";
+import QuantityButton from "../components/QuantityButton";
+import MainButton from "../components/MainButton";
 
 const ProductPage = () => {
   const [selectedColor, selectColor] = useState(product.colors[0]);
   const [selectedSize, selectSize] = useState(product.sizes[0]);
+  const [quantity, setQuantity] = useState(1);
   const selectedProduct = product;
   const productImage = `../../public/assets/images/${selectedColor}-shirt.svg`;
   return (
@@ -40,7 +43,7 @@ const ProductPage = () => {
           </div>
 
           <section>
-            <div className="flex flex-1 justify-between border-b pb-6 border-divider ">
+            <div className="flex flex-1 justify-between border-b pb-4 border-divider ">
               <div className="font-inter">
                 <p className="font-semibold text-2xl mb-2">
                   {selectedProduct.name}
@@ -61,7 +64,7 @@ const ProductPage = () => {
                 <FeatureIcon iconName="share.svg" classes="p-2" />
               </div>
             </div>
-            <div className="border-b flex items-center gap-5 py-6 border-divider font-inter">
+            <div className="border-b flex items-center gap-5 py-4 border-divider font-inter">
               <p className="text-primary font-bold text-2xl">
                 ${product.price}
               </p>
@@ -70,7 +73,7 @@ const ProductPage = () => {
               </p>
             </div>
 
-            <div className="border-b py-6 border-divider font-inter">
+            <div className="border-b py-4 border-divider font-inter">
               <p className="font-medium text-productSubTitle">Choose a color</p>
 
               <ColorSelector
@@ -82,7 +85,7 @@ const ProductPage = () => {
               />
             </div>
 
-            <div className="border-b py-6 border-divider font-inter">
+            <div className="border-b py-4 border-divider font-inter">
               <p className="font-medium text-productSubTitle">Choose a size</p>
 
               <SizeSelector
@@ -91,6 +94,16 @@ const ProductPage = () => {
                   selectSize(v);
                 }}
                 selectedSize={selectedSize}
+              />
+            </div>
+
+            <div className="border-b py-4 border-divider font-interr flex gap-2 items-center">
+              <QuantityButton quantity={quantity} onChange={setQuantity} />
+              <MainButton
+                color={colorMap[selectedColor].bg}
+                title="Add to cart"
+                iconName="white-cart"
+                onClick={() => {}}
               />
             </div>
           </section>
