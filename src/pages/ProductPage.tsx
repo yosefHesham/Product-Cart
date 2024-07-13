@@ -21,7 +21,7 @@ const ProductPage = () => {
         </h2>
         <CircleWithData classes="h-[50px] w-[50px]  bg-cartBg relative">
           <img
-            src="../../public/assets/images/brown-cart.png"
+            src="/assets/images/brown-cart.png"
             className="w-[17px] h-[17px]"
             alt="cart-icon"
           ></img>

@@ -6,9 +6,7 @@ interface Props {
 }
 
 const MainButton = ({ title, iconName, color, onClick }: Props) => {
-  const icon = iconName
-    ? `../../public/assets/images/${iconName}.png`
-    : undefined;
+  const icon = iconName ? `/assets/images/${iconName}.png` : undefined;
   return (
     <button
       onClick={onClick}
