@@ -27,10 +27,11 @@ export default {
         size:"#726C6C",
         cartBg:"#F5F1EE",
         shirts:{ 
-          yellow:"#FFAC3C",
+          orange:"#FFAC3C",
           blue:"#0078B5",
           red:" #BB0043",
-          purple:"#5D21B7"
+          purple:"#5D21B7",
+          
 
         }
 
