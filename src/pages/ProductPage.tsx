@@ -12,7 +12,7 @@ const ProductPage = () => {
   const [selectedSize, selectSize] = useState(product.sizes[0]);
   const [quantity, setQuantity] = useState(1);
   const selectedProduct = product;
-  const productImage = `../../public/assets/images/${selectedColor}-shirt.svg`;
+  const productImage = `/assets/images/${selectedColor}-shirt.svg`;
   return (
     <>
       <header className="border-b w-full py-5 box-border px-20 border-divider flex justify-between items-center">
