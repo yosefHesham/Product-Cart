@@ -6,6 +6,7 @@ import ColorSelector from "../components/ColorSelector";
 import SizeSelector from "../components/SizeSelector";
 import QuantityButton from "../components/QuantityButton";
 import MainButton from "../components/MainButton";
+import ProductSlider from "../components/ProductSlider";
 
 const ProductPage = () => {
   const [selectedColor, selectColor] = useState(product.colors[0]);
@@ -34,13 +35,20 @@ const ProductPage = () => {
 
       <main className="mt-5  px-20">
         <section className="flex xl:w-[80%]  mx-auto gap-12 justify-start">
-          <div className="flex-1">
+          <section className="flex-1">
             <img
               src={productImage}
               alt="shirt"
-              className=" w-[90%]  border border-iconBg rounded-[16px]"
+              className=" w-full border border-iconBg rounded-[16px]"
             ></img>
-          </div>
+            <div className="w-[380px] mt-2">
+              <ProductSlider
+                colors={product.colors}
+                onChange={(val) => selectColor(val)}
+                selectedColor={selectedColor}
+              />
+            </div>
+          </section>
 
           <section>
             <div className="flex flex-1 justify-between border-b pb-4 border-divider ">

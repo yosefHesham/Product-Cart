@@ -19,7 +19,7 @@ const QuantityButton = ({
         break;
 
       case "-":
-        if (quantity > 0) {
+        if (quantity > 1) {
           quantity--;
           onChange(quantity);
         }
