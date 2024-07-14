@@ -1,6 +1,6 @@
 import { useState } from "react";
 import CircleWithData from "../components/CircleWithData";
-import { colorMap, product } from "../data";
+import { colorMap, product, sizeToPrice } from "../data";
 import FeatureIcon from "../components/FeatureIcon";
 import ColorSelector from "../components/ColorSelector";
 import SizeSelector from "../components/SizeSelector";
@@ -8,6 +8,7 @@ import QuantityButton from "../components/QuantityButton";
 import MainButton from "../components/MainButton";
 import ProductSlider from "../components/ProductSlider";
 import InfoTabs from "../components/InfoTabs";
+import DeliverySection from "../components/DeliverySection";
 
 const ProductPage = () => {
   const [selectedColor, selectColor] = useState(product.colors[0]);
@@ -75,10 +76,10 @@ const ProductPage = () => {
             </div>
             <div className="border-b flex items-center gap-5 py-4 border-divider font-inter">
               <p className="text-primary font-bold text-2xl">
-                ${product.price}
+                ${product.price + sizeToPrice[selectedSize]}
               </p>
               <p className="text-black opacity-50 line-through">
-                ${product.price + 9}{" "}
+                ${product.price + sizeToPrice[selectedSize] + 9}{" "}
               </p>
             </div>
 
@@ -114,6 +115,9 @@ const ProductPage = () => {
                 iconName="white-cart"
                 onClick={() => {}}
               />
+            </div>
+            <div className="py-4  font-interr flex gap-2 items-center">
+              <DeliverySection />
             </div>
           </section>
         </section>

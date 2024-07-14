@@ -50,6 +50,17 @@ export const product = {
 //   },
 // ];
 
+interface SizeMap {
+  [key: string]: number;
+}
+
+export const sizeToPrice: SizeMap = {
+  Small: 0,
+  Medium: 10,
+  Large: 15,
+  "Extra Large": 20,
+  XXL: 25,
+};
 interface ColorMap {
   [key: string]: { [key: string]: string };
 }

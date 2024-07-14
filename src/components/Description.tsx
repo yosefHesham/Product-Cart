@@ -10,12 +10,12 @@ const benefits = [
 ];
 const Description = () => {
   return (
-    <section className="font-inter">
-      <h2 className="text-tabContentPrimary text-2xl font-bold">
+    <section className="font-inter mt-4 w-[65%]">
+      <h2 className="text-tabContentPrimary text-2xl font-bold mb-5">
         Product Description
       </h2>
 
-      <p className="text-tabContentSecondary text-sm">
+      <p className="text-tabContentSecondary text-[16px]">
         When it's colder than the far side of the moon and spitting rain too,
         you've still got to look good. From water-repellent leather to a rugged
         outsole, the Lunar Force 1 adapts AF-1 style, so you can keep your flame
@@ -23,10 +23,12 @@ const Description = () => {
         bring mountain boot toughness, while the star-studded toe design gives
         your look the edge
       </p>
-      <h3 className="text-2xl font-bold text-tabContentPrimary">Benefits</h3>
+      <h3 className="text-2xl font-bold text-tabContentPrimary my-5">
+        Benefits
+      </h3>
 
       {benefits.map((benefit, i) => (
-        <div key={i} className="flex gap-3 items-center">
+        <div key={i} className="flex gap-3 items-center mb-2">
           <img src="/assets/images/check-icon.png" />
           <p className="text-tabContentSecondary text-[16px]">{benefit}</p>
         </div>

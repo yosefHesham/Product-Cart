@@ -6,10 +6,10 @@ interface Props {
 const SizeItem = ({ size, isSelected, onClick }: Props) => {
   return (
     <div
-      className={` ${isSelected ? "bg-iconBg" : "bg-buttonBg"} flex items-center gap-2 rounded-lg py-[7px] px-[10px] mt-2`}
+      className={` ${isSelected ? "bg-iconBg" : "bg-buttonBg"} flex items-center gap-2 rounded-lg py-[7px] px-[10px] mt-2 cursor-pointer`}
     >
       <div
-        className="grid place-items-center font-inter cursor-pointer"
+        className="grid place-items-center font-inter"
         onClick={() => onClick(size)}
       >
         <input
@@ -27,7 +27,7 @@ const SizeItem = ({ size, isSelected, onClick }: Props) => {
       </div>
       <label
         htmlFor={size}
-        className={`${isSelected ? "text-checkout" : "text-size"} font-medium`}
+        className={`${isSelected ? "text-checkout" : "text-size"} font-medium cursor-pointer`}
       >
         {size}
       </label>
