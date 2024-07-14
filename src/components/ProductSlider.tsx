@@ -1,6 +1,7 @@
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { product } from "../data";
 
 interface Props {
   colors: string[];
@@ -13,7 +14,7 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
-    initialSlide: 0,
+    initialSlide: product.colors.indexOf(selectedColor),
     arrows: true,
     accessibility: false,
 

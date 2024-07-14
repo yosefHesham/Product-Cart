@@ -1,22 +1,50 @@
 import MainButton from "./MainButton";
+import { useCart } from "../contexts/useCart";
+import CartItem from "./CartItem";
 
-const MiniCartModal = () => {
+const MiniCartModal = ({ closeModal }: { closeModal: () => void }) => {
+  const { cart, checkout } = useCart();
+
+  const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
+
   return (
-    <div className="absolute top-0 bg-black opacity-55 font-inter">
-      <div className="bg-white p-4 top-5 right-7 rounded-3xl">
-        <div className="w-6 h-6 border-checkout rounded-full bg-white flex justify-center items-center">
-          <img src="assets/images/blue-x.svg" />
+    <div className="absolute  w-full inset-0 top-0 left-0 bg-black bg-opacity-75 font-inter">
+      <div className="bg-white absolute p-6 top-8 right-10 z-30 rounded-3xl shadow-lg">
+        <div
+          onClick={() => closeModal()}
+          className=" cursor-pointer w-6 h-6 border border-checkout rounded-full bg-white flex justify-center items-center"
+        >
+          <img src="assets/images/blue-x.svg" alt="close-modal" />
         </div>
         <div>
-          <h2 className="font-bold text-checkout">My Cart</h2>
+          <h2 className="font-bold text-checkout text-xl mb-4 text-center">
+            My Cart
+          </h2>
 
-          <hr></hr>
-          <div className="flex justify-between">
-            <p>Total</p>
+          <div className="space-y-2">
+            {!cart.length ? (
+              <p className="text-center text-customRed">
+                You Didn`t add any item
+              </p>
+            ) : (
+              cart.map((item) => <CartItem key={item.color} cart={item} />)
+            )}
           </div>
+
+          <hr className="my-10" />
+
+          <div className="flex justify-between ">
+            <p className="font-bold text-sm text-featureSubtitle">Total</p>
+            <p className="font-medium text-sm text-featureSubtitle">
+              ${total.toFixed(2)}
+            </p>
+          </div>
+
           <MainButton
-            color="bg-checkout"
-            onClick={() => {}}
+            color="bg-checkout mx-auto mt-10"
+            onClick={() => {
+              checkout();
+            }}
             iconName="white-cart"
             title="Checkout"
           />

@@ -10,35 +10,74 @@ import ProductSlider from "../components/ProductSlider";
 import InfoTabs from "../components/InfoTabs";
 import DeliverySection from "../components/DeliverySection";
 import ProductsGallery from "../components/ProductsGallery";
+import { useCart } from "../contexts/useCart";
+import MiniCartModal from "../components/MiniCartModal";
 
 const ProductPage = () => {
-  const [selectedColor, selectColor] = useState(product.colors[0]);
-  const [selectedSize, selectSize] = useState(product.sizes[0]);
-  const [quantity, setQuantity] = useState(1);
+  const [productState, setProductState] = useState({
+    selectedProduct: product,
+    selectedColor: product.colors[0],
+    selectedSize: product.sizes[0],
+    brand: product.brand,
+    quantity: 1,
+  });
+
   const [showGallery, setShowGallery] = useState(false);
-  const selectedProduct = product;
-  const productImage = `/assets/images/${selectedColor}-shirt.svg`;
+  const [showMiniCart, setShowMiniCart] = useState(false);
+
+  const { addToCart, itemsCounter } = useCart();
+  const productImage = `/assets/images/${productState.selectedColor}-shirt.svg`;
+
+  const handleColorChange = (color: string) => {
+    setProductState({ ...productState, selectedColor: color });
+  };
+
+  const handleSizeChange = (size: string) => {
+    setProductState({ ...productState, selectedSize: size });
+  };
+
+  const handleQuantityChange = (newQuantity: number) => {
+    setProductState({ ...productState, quantity: newQuantity });
+  };
+
+  const handleAddToCart = () => {
+    if (itemsCounter >= 15) return;
+    const newItem = {
+      color: productState.selectedColor,
+      brand: productState.brand,
+      size: productState.selectedSize,
+      title: productState.selectedProduct.brand,
+      price: product.price + sizeToPrice[productState.selectedSize],
+      quantity: productState.quantity,
+    };
+    console.log(newItem);
+    addToCart(newItem);
+    handleQuantityChange(1);
+  };
+
   return (
     <>
       <header className="border-b w-full py-5 box-border px-20 border-divider flex justify-between items-center">
         <h2 className="font-inter text-primary font-extrabold italic text-3xl">
           Company
         </h2>
-        <CircleWithData classes="h-[50px] w-[50px]  bg-cartBg relative">
+        <CircleWithData
+          onClick={() => setShowMiniCart(true)}
+          classes="h-[50px] w-[50px]  bg-cartBg relative cursor-pointer"
+        >
           <img
             src="/assets/images/brown-cart.png"
             className="w-[17px] h-[17px]"
             alt="cart-icon"
-          ></img>
-
+          />
           <CircleWithData classes="w-5 h-5  text-white absolute top-[-2px] bg-primary text-center font-inter text-xs flex justify-center items-center right-[-5px]">
-            <p>3</p>
+            <p>{itemsCounter}</p>
           </CircleWithData>
         </CircleWithData>
       </header>
 
       <main className="pt-5 px-20 relative">
-        <section className="flex xl:w-[80%] 2xl:w-[60%] md:w-[90%]  sm:w-full  mx-auto gap-12 justify-start">
+        <section className="flex xl:w-[80%] 2xl:w-[60%] md:w-[90%] sm:w-full mx-auto gap-12 justify-start">
           <section className="flex-1">
             <img
               src={productImage}
@@ -46,24 +85,27 @@ const ProductPage = () => {
               onClick={() => {
                 setShowGallery(true);
               }}
-              className=" w-full border border-iconBg rounded-[16px]"
-            ></img>
+              className="w-full border border-iconBg rounded-[16px]"
+            />
             <div className="w-[380px] mt-8">
               <ProductSlider
                 colors={product.colors}
-                onChange={(val) => selectColor(val)}
-                selectedColor={selectedColor}
+                onChange={handleColorChange}
+                selectedColor={productState.selectedColor}
               />
             </div>
           </section>
 
           <section>
-            <div className="flex flex-1 justify-between border-b pb-4 border-divider ">
+            <div className="flex flex-1 justify-between border-b pb-4 border-divider">
               <div className="font-inter">
                 <p className="font-semibold text-2xl mb-2">
-                  {selectedProduct.name}
+                  {productState.selectedProduct.name}
                 </p>
-                <p className="text-productSubTitle"> {selectedProduct.brand}</p>
+                <p className="text-productSubTitle">
+                  {" "}
+                  {productState.selectedProduct.brand}
+                </p>
               </div>
               <div className="flex gap-3">
                 <FeatureIcon
@@ -81,58 +123,61 @@ const ProductPage = () => {
             </div>
             <div className="border-b flex items-center gap-5 py-4 border-divider font-inter">
               <p className="text-primary font-bold text-2xl">
-                ${product.price + sizeToPrice[selectedSize]}
+                ${product.price + sizeToPrice[productState.selectedSize]}
               </p>
               <p className="text-black opacity-50 line-through">
-                ${product.price + sizeToPrice[selectedSize] + 9}{" "}
+                ${product.price + sizeToPrice[productState.selectedSize] + 9}{" "}
               </p>
             </div>
 
             <div className="border-b py-4 border-divider font-inter">
               <p className="font-medium text-productSubTitle">Choose a color</p>
-
               <ColorSelector
                 colors={product.colors}
-                selectedColor={selectedColor}
-                onChange={(x) => {
-                  selectColor(x);
-                }}
+                selectedColor={productState.selectedColor}
+                onChange={handleColorChange}
               />
             </div>
 
             <div className="border-b py-4 border-divider font-inter">
               <p className="font-medium text-productSubTitle">Choose a size</p>
-
               <SizeSelector
                 sizes={product.sizes}
-                onChange={(v) => {
-                  selectSize(v);
-                }}
-                selectedSize={selectedSize}
+                onChange={handleSizeChange}
+                selectedSize={productState.selectedSize}
               />
             </div>
 
             <div className="border-b py-4 border-divider font-interr flex gap-2 items-center">
-              <QuantityButton quantity={quantity} onChange={setQuantity} />
+              <QuantityButton
+                quantity={productState.quantity}
+                onChange={handleQuantityChange}
+              />
               <MainButton
-                color={colorMap[selectedColor].bg}
+                color={colorMap[productState.selectedColor].bg}
                 title="Add to cart"
                 iconName="white-cart"
-                onClick={() => {}}
+                onClick={handleAddToCart}
               />
             </div>
           </section>
         </section>
+
         <div className="py-4 w-[80%] mx-auto font-inter flex gap-2 items-center">
           <DeliverySection />
         </div>
+
         <section className="w-full">
           <InfoTabs />
         </section>
 
+        {showMiniCart && (
+          <MiniCartModal closeModal={() => setShowMiniCart(false)} />
+        )}
+
         {showGallery && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-65 top-0 left-0 z-10">
-            <div className="w-[80%] absolute mx-auto  bg-white">
+            <div className="w-[80%] absolute mx-auto bg-white">
               <button
                 className="relative top-5 mt-5 left-[95%] p-2"
                 onClick={() => setShowGallery(false)}
@@ -140,15 +185,21 @@ const ProductPage = () => {
                 <img
                   src="/assets/images/blue-x.png"
                   className="w-5 h-5 cursor-pointer"
+                  alt="close"
                 />
               </button>
               <ProductsGallery
-                initialIndex={product.colors.indexOf(selectedColor)}
+                initialIndex={productState.selectedProduct.colors.indexOf(
+                  productState.selectedColor
+                )}
                 onSelect={(index) => {
-                  selectColor(product.colors[index]);
+                  setProductState({
+                    ...productState,
+                    selectedColor: productState.selectedProduct.colors[index],
+                  });
                   setShowGallery(false);
                 }}
-                images={product.colors.map(
+                images={productState.selectedProduct.colors.map(
                   (col) => `/assets/images/${col}-shirt.svg`
                 )}
               />
