@@ -35,6 +35,7 @@ export interface CartContextType {
   removeFromCart: (color: string, size: string) => void;
   updateQuantity: (color: string, size: string, quantity: number) => void;
   checkout: () => void;
+  updateCartCount: (quantity: number) => void;
 }
 
 export const CartContext = createContext<CartContextType | undefined>(
@@ -52,48 +53,69 @@ const cartReducer = (
           item.color === action.payload.color &&
           item.size === action.payload.size
       );
-      console.log(state.cart);
+      let newCart;
       if (existingItemIndex !== -1) {
-        const updatedCart = state.cart.map((item, index) =>
+        newCart = state.cart.map((item, index) =>
           index === existingItemIndex
             ? { ...item, quantity: item.quantity + action.payload.quantity }
             : item
         );
-        return {
-          ...state,
-          cart: updatedCart,
-        };
       } else {
-        return {
-          ...state,
-          cart: [...state.cart, { ...action.payload }],
-        };
+        newCart = [...state.cart, { ...action.payload }];
       }
+      return {
+        ...state,
+        cart: newCart,
+        itemsCounter: state.itemsCounter + action.payload.quantity,
+      };
+
     case "REMOVE_FROM_CART":
-      const updatedCart = state.cart.filter(
+      const filteredCart = state.cart.filter(
         (item) =>
           !(
             item.color === action.payload.color &&
             item.size === action.payload.size
           )
       );
+      const removedItem = state.cart.find(
+        (item) =>
+          item.color === action.payload.color &&
+          item.size === action.payload.size
+      );
       return {
         ...state,
-        cart: updatedCart,
+        cart: filteredCart,
+        itemsCounter: removedItem
+          ? state.itemsCounter - removedItem.quantity
+          : state.itemsCounter,
       };
+
     case "UPDATE_QUANTITY":
       const updatedCartWithQuantity = state.cart.map((item) =>
         item.color === action.payload.color && item.size === action.payload.size
           ? { ...item, quantity: action.payload.quantity }
           : item
       );
+      const updatedQuantity = state.cart.reduce(
+        (total, item) =>
+          item.color === action.payload.color &&
+          item.size === action.payload.size
+            ? total + action.payload.quantity - item.quantity
+            : total,
+        0
+      );
       return {
         ...state,
         cart: updatedCartWithQuantity,
+        itemsCounter: state.itemsCounter + updatedQuantity,
       };
+
+    case "UPDATE_CART_COUNT":
+      return { ...state, itemsCounter: action.payload };
 
     case "CHECKOUT":
       return { cart: [], itemsCounter: 0 };
+
     default:
       return state;
   }
@@ -116,6 +138,9 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     dispatch({ type: "UPDATE_QUANTITY", payload: { color, size, quantity } });
   };
 
+  const updateCartCount = (quantity: number) => {
+    dispatch({ type: "UPDATE_CART_COUNT", payload: quantity });
+  };
   const checkout = () => {
     dispatch({ type: "CHECKOUT" });
   };
@@ -124,9 +149,10 @@ export const CartProvider: React.FC<{ children: ReactNode }> = ({
     <CartContext.Provider
       value={{
         cart: cartState.cart,
-        itemsCounter: cartState.cart.length,
+        itemsCounter: cartState.itemsCounter,
         addToCart,
         checkout,
+        updateCartCount,
         removeFromCart,
         updateQuantity,
       }}

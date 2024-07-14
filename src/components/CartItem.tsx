@@ -7,7 +7,8 @@ interface Props {
 }
 
 const CartItem = ({ cart }: Props) => {
-  const { updateQuantity, removeFromCart } = useCart();
+  const { updateQuantity, removeFromCart, updateCartCount, itemsCounter } =
+    useCart();
 
   const handleRemoveFromCart = (color: string, size: string) => {
     removeFromCart(color, size);
@@ -18,11 +19,13 @@ const CartItem = ({ cart }: Props) => {
       case "+":
         if (cart.quantity < 15) {
           updateQuantity(cart.color, cart.size, cart.quantity + 1);
+          updateCartCount(itemsCounter + 1);
         }
         break;
       case "-":
         if (cart.quantity > 1) {
           updateQuantity(cart.color, cart.size, cart.quantity - 1);
+          updateCartCount(itemsCounter - 1);
         }
         break;
     }

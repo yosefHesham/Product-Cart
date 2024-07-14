@@ -50,8 +50,8 @@ const ProductPage = () => {
       price: product.price + sizeToPrice[productState.selectedSize],
       quantity: productState.quantity,
     };
+
     addToCart(newItem);
-    handleQuantityChange(1);
   };
 
   return (
