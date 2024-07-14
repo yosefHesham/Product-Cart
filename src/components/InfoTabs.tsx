@@ -18,7 +18,7 @@ const InfoTabs = () => {
 
   return (
     <div>
-      <div className="flex space-x-3 gap-5 border-b-2 mt-12 font-inter">
+      <div className="flex space-x-3 gap-5 border-b-2  lg:mt-6 mt-12 font-inter">
         {tabsData.map((tab, idx) => {
           return (
             <button

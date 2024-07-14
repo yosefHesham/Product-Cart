@@ -22,7 +22,7 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
       {
         breakpoint: 1024,
         settings: {
-          slidesToShow: 3,
+          slidesToShow: 4,
           slidesToScroll: 1,
           infinite: true,
         },
@@ -30,7 +30,7 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
       {
         breakpoint: 600,
         settings: {
-          slidesToShow: 2,
+          slidesToShow: 3,
           slidesToScroll: 1,
           initialSlide: 2,
         },
@@ -38,7 +38,7 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 3,
           slidesToScroll: 1,
           arrows: false,
         },
@@ -51,10 +51,11 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
       {...settings}
       nextArrow={<img src="/assets/images/next-arrow.png" />}
       prevArrow={<img src="/assets/images/prev-arrow.png" />}
+      className="mx-2 w-11/12 lg:w-[450px]"
     >
       {colors.map((color, index) => (
         <div
-          className={`border-0 outline-none mx-4 ${selectedColor === color ? "bg-gradient-to-br  from-shirts-selectedFrom to-shirts-selectedTo" : ""} rounded-[16px] flex justify-center items-center p-1`}
+          className={`border-0 w-min outline-none mx-4 ${selectedColor === color ? "bg-gradient-to-br  from-shirts-selectedFrom to-shirts-selectedTo" : ""} rounded-[16px] flex justify-center items-center p-1`}
         >
           <img
             key={index}
@@ -63,7 +64,7 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
             onClick={() => {
               onChange(color);
             }}
-            className="rounded-[16px] w-full  mx-auto cursor-pointer "
+            className="rounded-[16px] w-full  mx-auto cursor-pointer"
           />
         </div>
       ))}

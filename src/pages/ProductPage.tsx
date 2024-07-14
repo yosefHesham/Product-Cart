@@ -56,7 +56,7 @@ const ProductPage = () => {
 
   return (
     <>
-      <header className="border-b w-full py-5 box-border px-20 border-divider flex justify-between items-center">
+      <header className="border-b w-full py-5 box-border px-5 sm:px-7 md:px-20 lg:px-20 border-divider flex justify-between items-center">
         <h2 className="font-inter text-primary font-extrabold italic text-[32px]">
           Company
         </h2>
@@ -75,8 +75,8 @@ const ProductPage = () => {
         </CircleWithData>
       </header>
 
-      <main className="pt-5 px-20 relative">
-        <section className="flex xl:w-[80%] 2xl:w-[60%] md:w-[90%] sm:w-full mx-auto gap-12 justify-start">
+      <main className="pt-5 px-2 sm:px-10 md:px-5 relative">
+        <section className="flex flex-col  lg:flex-row xl:w-[80%] 2xl:w-[60%] md:w-[90%] sm:w-full mx-auto gap-x-20 justify-start">
           <section className="flex-1">
             <img
               src={productImage}
@@ -84,9 +84,9 @@ const ProductPage = () => {
               onClick={() => {
                 setShowGallery(true);
               }}
-              className="w-full border border-iconBg rounded-[16px] cursor-pointer"
+              className="w-72 sm:w-3/4 md:w-[45%] lg:w-[85%] border mx-auto border-iconBg rounded-[16px] cursor-pointer"
             />
-            <div className="w-[380px] mt-8">
+            <div className="mt-8">
               <ProductSlider
                 colors={product.colors}
                 onChange={handleColorChange}
@@ -98,29 +98,40 @@ const ProductPage = () => {
           <section>
             <div className="flex flex-1 justify-between border-b pb-4 border-divider">
               <div className="font-inter">
-                <p className="font-semibold text-[28px] mb-2">
+                <p className="font-semibold  text-lg sm:text-[28px] mb-2">
                   {productState.selectedProduct.name}
                 </p>
                 <p className="text-productSubTitle text-[16px]">
                   {productState.selectedProduct.brand}
                 </p>
               </div>
-              <div className="flex gap-3">
-                <FeatureIcon
-                  classes="py-2 px-3"
-                  iconName="heart.svg"
-                  bgColor="bg-iconBgSecondary"
-                >
-                  <p className="text-customLightRed text-[16px] font-semibold font-inter">
-                    109
+              <div>
+                <div className="flex gap-3">
+                  <FeatureIcon
+                    classes="py-2 px-3"
+                    iconName="heart.svg"
+                    bgColor="bg-iconBgSecondary"
+                  >
+                    <p className="text-customLightRed text-[16px] font-semibold font-inter">
+                      109
+                    </p>
+                  </FeatureIcon>
+                  <FeatureIcon iconName="bookmark.svg" classes="p-2 w-10" />
+                  <FeatureIcon iconName="share.svg" classes="p-2 w-10" />
+                </div>
+                <div className="flex  gap-4  justify-end mt-4 place-self-end sm:hidden items-center">
+                  <p className="text-primary font-bold  text-sm sm:text-[34px]">
+                    ${product.price + sizeToPrice[productState.selectedSize]}
                   </p>
-                </FeatureIcon>
-                <FeatureIcon iconName="bookmark.svg" classes="p-2" />
-                <FeatureIcon iconName="share.svg" classes="p-2" />
+                  <p className="text-black opacity-50 text-sm  sm:text-xl line-through">
+                    $
+                    {product.price + sizeToPrice[productState.selectedSize] + 9}{" "}
+                  </p>
+                </div>
               </div>
             </div>
-            <div className="border-b flex items-center gap-5 py-4 border-divider font-inter">
-              <p className="text-primary font-bold text-[34px]">
+            <div className="border-b  hidden sm:flex items-center gap-5 py-4 border-divider font-inter">
+              <p className="text-primary font-bold text-lg sm:text-[34px]">
                 ${product.price + sizeToPrice[productState.selectedSize]}
               </p>
               <p className="text-black opacity-50 text-xl line-through">
@@ -129,7 +140,7 @@ const ProductPage = () => {
             </div>
 
             <div className="border-b py-4 border-divider font-inter">
-              <p className="font-medium text-productSubTitle text-[16px] mb-1">
+              <p className="font-medium text-productSubTitle text-sm sm:text-[16px] mb-1">
                 Choose a color
               </p>
               <ColorSelector
@@ -140,7 +151,7 @@ const ProductPage = () => {
             </div>
 
             <div className="border-b py-4 border-divider font-inter">
-              <p className="font-medium text-productSubTitle text-[16px] mb-1">
+              <p className="font-medium text-productSubTitle text-sm sm:text-[16px] mb-1">
                 Choose a size
               </p>
               <SizeSelector
@@ -150,7 +161,7 @@ const ProductPage = () => {
               />
             </div>
 
-            <div className=" py-4 font-interr flex gap-2 items-center">
+            <div className="  font-inter border-b py-4  justify-between lg:justify-center border-divider flex gap-2 items-center">
               <QuantityButton
                 quantity={productState.quantity}
                 onChange={handleQuantityChange}
@@ -162,10 +173,13 @@ const ProductPage = () => {
                 onClick={handleAddToCart}
               />
             </div>
+            <div className="py-4 lg:flex w-full  mx-auto font-inter hidden gap-2 items-center">
+              <DeliverySection />
+            </div>
           </section>
         </section>
 
-        <div className="py-4 w-[80%] mx-auto font-inter flex gap-2 items-center">
+        <div className="py-4 lg:hidden w-full sm:w-[90%]  mx-auto font-inter flex gap-2 items-center">
           <DeliverySection />
         </div>
 

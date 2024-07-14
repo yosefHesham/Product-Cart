@@ -10,8 +10,8 @@ const benefits = [
 ];
 const Description = () => {
   return (
-    <section className="font-inter mt-4 w-[65%]">
-      <h2 className="text-tabContentPrimary text-2xl font-bold mb-5">
+    <section className="font-inter  md:px-8 mt-4 w-full sm:w-[80%] md:w-[65%]">
+      <h2 className="text-tabContentPrimary text-xl sm:text-2xl font-bold mb-5">
         Product Description
       </h2>
 
@@ -23,7 +23,7 @@ const Description = () => {
         bring mountain boot toughness, while the star-studded toe design gives
         your look the edge
       </p>
-      <h3 className="text-2xl font-bold text-tabContentPrimary my-5">
+      <h3 className="text-xl smt:ext-2xl font-bold text-tabContentPrimary my-5">
         Benefits
       </h3>
 

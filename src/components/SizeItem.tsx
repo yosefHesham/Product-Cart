@@ -30,7 +30,7 @@ const SizeItem = ({ size, isSelected, onClick }: Props) => {
       </div>
       <label
         htmlFor={size}
-        className={`${isSelected ? "text-checkout" : "text-size"} font-medium ttext-sm cursor-pointer`}
+        className={`${isSelected ? "text-checkout" : "text-size"} font-medium text-xs  sm:text-sm cursor-pointer`}
       >
         {size}
       </label>
