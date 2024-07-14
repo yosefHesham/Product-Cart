@@ -36,7 +36,7 @@ const CartItem = ({ cart }: Props) => {
       />
 
       <div className="font-inter flex-1">
-        <p className="font-semibold text-[16px] text-checkout text-nowrap">
+        <p className="font-semibold text-xs sm:text-[16px]  text-checkout  whitespace-nowrap">
           {cart.title}
         </p>
         <div className="flex items-center gap-2">
@@ -48,7 +48,7 @@ const CartItem = ({ cart }: Props) => {
           ></div>
         </div>
         <div className="flex justify-between items-center mt-4  ">
-          <p className="flex-1 text-featureSubtitle font-semibold text-sm">
+          <p className="text-featureSubtitle font-semibold text-sm">
             ${(cart.price * cart.quantity).toFixed(2)}
           </p>
           <div className="flex gap-2 items-center">
