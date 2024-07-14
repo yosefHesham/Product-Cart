@@ -41,7 +41,7 @@ const MiniCartModal = ({ closeModal }: { closeModal: () => void }) => {
           </div>
 
           <MainButton
-            color="bg-checkout mx-auto mt-10 w-60 sm:w-full"
+            color="bg-checkout mx-auto mt-10 w-56 sm:w-full"
             disabled={!itemsCounter}
             onClick={() => {
               checkout();
