@@ -7,6 +7,7 @@ import SizeSelector from "../components/SizeSelector";
 import QuantityButton from "../components/QuantityButton";
 import MainButton from "../components/MainButton";
 import ProductSlider from "../components/ProductSlider";
+import InfoTabs from "../components/InfoTabs";
 
 const ProductPage = () => {
   const [selectedColor, selectColor] = useState(product.colors[0]);
@@ -33,7 +34,7 @@ const ProductPage = () => {
         </CircleWithData>
       </header>
 
-      <main className="mt-5  px-20">
+      <main className="mt-5 px-20">
         <section className="flex xl:w-[80%]  mx-auto gap-12 justify-start">
           <section className="flex-1">
             <img
@@ -41,7 +42,7 @@ const ProductPage = () => {
               alt="shirt"
               className=" w-full border border-iconBg rounded-[16px]"
             ></img>
-            <div className="w-[380px] mt-2">
+            <div className="w-[380px] mt-8">
               <ProductSlider
                 colors={product.colors}
                 onChange={(val) => selectColor(val)}
@@ -115,6 +116,9 @@ const ProductPage = () => {
               />
             </div>
           </section>
+        </section>
+        <section className="w-full">
+          <InfoTabs />
         </section>
       </main>
     </>

@@ -11,11 +11,12 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
   const settings = {
     infinite: false,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     initialSlide: 0,
     arrows: true,
     accessibility: false,
+
     responsive: [
       {
         breakpoint: 1024,
@@ -23,7 +24,6 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
           slidesToShow: 3,
           slidesToScroll: 1,
           infinite: true,
-          dots: true,
         },
       },
       {
@@ -39,6 +39,7 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          arrows: false,
         },
       },
     ],
@@ -51,14 +52,17 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
       prevArrow={<img src="/assets/images/prev-arrow.png" />}
     >
       {colors.map((color, index) => (
-        <div key={index} className="mx-10">
+        <div
+          className={`border-0 outline-none mx-4 ${selectedColor === color ? "bg-gradient-to-br  from-shirts-selectedFrom to-shirts-selectedTo" : ""} rounded-[16px] flex justify-center items-center p-1`}
+        >
           <img
+            key={index}
             src={`/assets/images/${color}-shirt.svg`}
             alt={`Product ${index}`}
             onClick={() => {
               onChange(color);
             }}
-            className={`rounded-[16px]  cursor-pointer ${selectedColor === color ? "" : ""}`}
+            className="rounded-[16px] w-full  mx-auto cursor-pointer "
           />
         </div>
       ))}

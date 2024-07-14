@@ -32,8 +32,8 @@ export default {
           blue:"#0078B5",
           red:" #BB0043",
           purple:"#5D21B7",
-          
-
+          selectedFrom:"#3A4980",
+          selectedTo: "#2C307933"
         }
 
       }
