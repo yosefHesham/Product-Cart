@@ -66,30 +66,26 @@ const ProductsGallery = ({
               }}
               src={img}
               alt={`Image ${index + 1}`}
-              className="w-[60%] h-[350px] mx-auto border border-iconBg rounded-[16px]"
+              className="w-[60%] h-[350px] mx-auto border border-iconBg rounded-[16px] cursor-pointer"
             />
           </div>
         ))}
       </Slider>
       <Slider
         {...settingsThumbs}
+        className="py-5"
         asNavFor={nav1}
         ref={(slider) => setNav2(slider!)}
       >
         {images.map((img, index) => (
-          <div
-            key={index}
-            className={`border-0 w-[10%] outline-none mx-4 ${activeSlide === index ? "bg-gradient-to-br  from-shirts-selectedFrom to-shirts-selectedTo" : ""} rounded-[16px] flex justify-center items-center p-1`}
-          >
-            <img
-              onDoubleClick={() => {
-                onSelect(index);
-              }}
-              src={img}
-              alt={`Thumbnail ${index + 1}`}
-              className="rounded-[16px] w-[98%]  mx-auto cursor-pointer"
-            />
-          </div>
+          <img
+            onDoubleClick={() => {
+              onSelect(index);
+            }}
+            src={img}
+            alt={`Thumbnail ${index + 1}`}
+            className={`rounded-[16px] ${activeSlide === index ? "border-2 border-black" : ""} h-32 mx-auto cursor-pointer`}
+          />
         ))}
       </Slider>
     </div>
