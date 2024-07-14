@@ -49,6 +49,32 @@ const ProductsGallery = ({
     centerPadding: "10px",
     arrows: false,
     beforeChange: (_: number, next: number) => setActiveSlide(next),
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 1,
+          infinite: true,
+        },
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          initialSlide: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 1,
+          arrows: false,
+        },
+      },
+    ],
   };
 
   return (
@@ -66,7 +92,7 @@ const ProductsGallery = ({
               }}
               src={img}
               alt={`Image ${index + 1}`}
-              className="w-[60%] h-[350px] mx-auto border border-iconBg rounded-[16px] cursor-pointer"
+              className="w-[90%] sm:w-7/12 h-[350px] mx-auto border border-iconBg rounded-[16px] cursor-pointer"
             />
           </div>
         ))}

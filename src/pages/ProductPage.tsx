@@ -84,7 +84,7 @@ const ProductPage = () => {
               onClick={() => {
                 setShowGallery(true);
               }}
-              className="w-72 sm:w-3/4 md:w-[45%] lg:w-[85%] border mx-auto border-iconBg rounded-[16px] cursor-pointer"
+              className="w-72 sm:w-4/6 md:w-[45%] lg:w-[85%] border mx-auto border-iconBg rounded-[16px] cursor-pointer"
             />
             <div className="mt-8">
               <ProductSlider
@@ -193,13 +193,13 @@ const ProductPage = () => {
 
         {showGallery && (
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-65 top-0 left-0 z-10">
-            <div className="w-[80%] absolute mx-auto bg-white">
+            <div className="w-full sm:w-11/12 absolute mx-auto bg-white">
               <button
                 className="relative top-5 mt-5 left-[95%] p-2"
                 onClick={() => setShowGallery(false)}
               >
                 <img
-                  src="/assets/images/blue-x.png"
+                  src="/assets/images/blue-x.svg"
                   className="w-5 h-5 cursor-pointer"
                   alt="close"
                 />
