@@ -50,7 +50,6 @@ const ProductPage = () => {
       price: product.price + sizeToPrice[productState.selectedSize],
       quantity: productState.quantity,
     };
-    console.log(newItem);
     addToCart(newItem);
     handleQuantityChange(1);
   };
@@ -58,7 +57,7 @@ const ProductPage = () => {
   return (
     <>
       <header className="border-b w-full py-5 box-border px-20 border-divider flex justify-between items-center">
-        <h2 className="font-inter text-primary font-extrabold italic text-3xl">
+        <h2 className="font-inter text-primary font-extrabold italic text-[32px]">
           Company
         </h2>
         <CircleWithData
@@ -85,7 +84,7 @@ const ProductPage = () => {
               onClick={() => {
                 setShowGallery(true);
               }}
-              className="w-full border border-iconBg rounded-[16px]"
+              className="w-full border border-iconBg rounded-[16px] cursor-pointer"
             />
             <div className="w-[380px] mt-8">
               <ProductSlider
@@ -99,11 +98,10 @@ const ProductPage = () => {
           <section>
             <div className="flex flex-1 justify-between border-b pb-4 border-divider">
               <div className="font-inter">
-                <p className="font-semibold text-2xl mb-2">
+                <p className="font-semibold text-[28px] mb-2">
                   {productState.selectedProduct.name}
                 </p>
-                <p className="text-productSubTitle">
-                  {" "}
+                <p className="text-productSubTitle text-[16px]">
                   {productState.selectedProduct.brand}
                 </p>
               </div>
@@ -113,7 +111,7 @@ const ProductPage = () => {
                   iconName="heart.svg"
                   bgColor="bg-iconBgSecondary"
                 >
-                  <p className="text-customLightRed font-semibold font-inter">
+                  <p className="text-customLightRed text-[16px] font-semibold font-inter">
                     109
                   </p>
                 </FeatureIcon>
@@ -122,16 +120,18 @@ const ProductPage = () => {
               </div>
             </div>
             <div className="border-b flex items-center gap-5 py-4 border-divider font-inter">
-              <p className="text-primary font-bold text-2xl">
+              <p className="text-primary font-bold text-[34px]">
                 ${product.price + sizeToPrice[productState.selectedSize]}
               </p>
-              <p className="text-black opacity-50 line-through">
+              <p className="text-black opacity-50 text-xl line-through">
                 ${product.price + sizeToPrice[productState.selectedSize] + 9}{" "}
               </p>
             </div>
 
             <div className="border-b py-4 border-divider font-inter">
-              <p className="font-medium text-productSubTitle">Choose a color</p>
+              <p className="font-medium text-productSubTitle text-[16px] mb-1">
+                Choose a color
+              </p>
               <ColorSelector
                 colors={product.colors}
                 selectedColor={productState.selectedColor}
@@ -140,7 +140,9 @@ const ProductPage = () => {
             </div>
 
             <div className="border-b py-4 border-divider font-inter">
-              <p className="font-medium text-productSubTitle">Choose a size</p>
+              <p className="font-medium text-productSubTitle text-[16px] mb-1">
+                Choose a size
+              </p>
               <SizeSelector
                 sizes={product.sizes}
                 onChange={handleSizeChange}
@@ -148,7 +150,7 @@ const ProductPage = () => {
               />
             </div>
 
-            <div className="border-b py-4 border-divider font-interr flex gap-2 items-center">
+            <div className=" py-4 font-interr flex gap-2 items-center">
               <QuantityButton
                 quantity={productState.quantity}
                 onChange={handleQuantityChange}

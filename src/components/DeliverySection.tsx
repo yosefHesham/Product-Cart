@@ -23,7 +23,7 @@ const items = [
 ];
 const DeliverySection = () => {
   return (
-    <section className="rounded-[14px] border border-divider p-[17px] w-full">
+    <section className="rounded-[14px] font-inter border border-divider px-[17px] w-full">
       {items.map((item, i) => (
         <Item
           iconName={item.iconName}
@@ -51,18 +51,18 @@ const Item = ({
   withDivider: boolean;
 }) => {
   return (
-    <div
-      className={`${withDivider ? "border-b border-divider" : ""} pb-4 mb-4`}
-    >
-      <div className="flex gap-2 mb-2 items-center">
+    <div className={`${withDivider ? "border-b border-divider" : ""} py-2`}>
+      <div className="flex gap-3 mb-2 items-center">
         <img
           src={`/assets/images/${iconName}.png`}
           alt={iconName}
           className="w-6 h-6"
         />
-        <p className="text-primary font-bold text-lg">{title}</p>
+        <div>
+          <p className="text-primary font-bold text-[17px] m-0">{title}</p>
+          {children}
+        </div>
       </div>
-      {children}
     </div>
   );
 };

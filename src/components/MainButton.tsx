@@ -23,7 +23,7 @@ const MainButton = ({
       className={`${color} ${disabled ? `${disabledColor}` : ""} rounded-[29px] flex justify-center gap-5 items-center w-80 h-14 text-white font-inter`}
     >
       {icon && <img src={icon} alt={iconName} />}
-      <p>{title}</p>
+      <p className="font-semibold font-inter text-[16px]">{title}</p>
     </button>
   );
 };

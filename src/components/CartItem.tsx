@@ -34,7 +34,7 @@ const CartItem = ({ cart }: Props) => {
       <div className="font-inter flex-1">
         <p className="font-semibold text-[16px] text-checkout">{cart.title}</p>
         <div className="flex items-center gap-2">
-          <p>{cart.size}</p>
+          <p className="font-medium font[13px]">{cart.size}</p>
           <div
             className={`bg-clip-content border ${colorMap[cart.color].border} ${colorMap[cart.color].bg} p-1 rounded-full h-4 w-4`}
           ></div>
@@ -44,7 +44,7 @@ const CartItem = ({ cart }: Props) => {
             ${cart.price * cart.quantity}
           </p>
           <div className="flex gap-1 items-center">
-            <p className="text-cartQuantiy font-medium text-sm">
+            <p className="text-cartQuantiy font-semibold text-sm">
               {cart.quantity}
             </p>
             <div className="flex flex-col gap-1">

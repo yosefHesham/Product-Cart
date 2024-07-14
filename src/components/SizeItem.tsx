@@ -16,18 +16,21 @@ const SizeItem = ({ size, isSelected, onClick }: Props) => {
           type="radio"
           checked={isSelected}
           id={size}
-          className={`col-start-1 row-start-1 peer appearance-none  w-5 h-5  ${isSelected ? "border-white border-2" : " border border-size"} rounded-full`}
+          className={`col-start-1 row-start-1 peer appearance-none  h-4 w-4  ${!isSelected ? "border border-size" : ""}  rounded-full`}
         />
         <div
           className="
+          
         peer-checked:bg-checkout
+        peer-checked:border-2
+        peer-checked: border-white
         col-start-1 row-start-1
-        w-3 h-3 rounded-full"
+        h-4 w-4 rounded-full"
         />
       </div>
       <label
         htmlFor={size}
-        className={`${isSelected ? "text-checkout" : "text-size"} font-medium cursor-pointer`}
+        className={`${isSelected ? "text-checkout" : "text-size"} font-medium ttext-sm cursor-pointer`}
       >
         {size}
       </label>

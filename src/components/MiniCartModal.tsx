@@ -17,14 +17,14 @@ const MiniCartModal = ({ closeModal }: { closeModal: () => void }) => {
           <img src="assets/images/blue-x.svg" alt="close-modal" />
         </div>
         <div>
-          <h2 className="font-bold text-checkout text-xl mb-4 text-center">
+          <h2 className="font-semibold text-checkout text-[28px] mb-4 text-center">
             My Cart
           </h2>
 
           <div className="space-y-2">
             {!cart.length ? (
-              <p className="text-center text-customRed">
-                You Didn`t add any item
+              <p className="text-center fontt-semibold text-customRed">
+                Your cart is empty, find great products and add them now !
               </p>
             ) : (
               cart.map((item) => <CartItem key={item.color} cart={item} />)
