@@ -121,11 +121,11 @@ const ProductPage = () => {
                 onClick={() => {}}
               />
             </div>
-            <div className="py-4  font-interr flex gap-2 items-center">
-              <DeliverySection />
-            </div>
           </section>
         </section>
+        <div className="py-4 w-[80%] mx-auto font-inter flex gap-2 items-center">
+          <DeliverySection />
+        </div>
         <section className="w-full">
           <InfoTabs />
         </section>

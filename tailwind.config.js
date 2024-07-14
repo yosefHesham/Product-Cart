@@ -27,6 +27,7 @@ export default {
         size:"#726C6C",
         cartBg:"#F5F1EE",
         bgGradient:"#CDCDCD",
+        cartItemBorder:"#E2E2E2",
         shirts:{ 
           orange:"#FFAC3C",
           blue:"#0078B5",
