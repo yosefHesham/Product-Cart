@@ -96,7 +96,7 @@ const ProductPage = () => {
           </section>
 
           <section>
-            <div className="flex flex-1 justify-between border-b pb-4 border-divider">
+            <div className="flex flex-1 mt-2 lg:mt-0 justify-between border-b pb-4 border-divider">
               <div className="font-inter">
                 <p className="font-semibold  text-lg sm:text-[28px] mb-2">
                   {productState.selectedProduct.name}
@@ -195,7 +195,7 @@ const ProductPage = () => {
           <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-65 top-0 left-0 z-10">
             <div className="w-full sm:w-11/12 absolute mx-auto bg-white">
               <button
-                className="relative top-5 mt-5 left-[95%] p-2"
+                className="relative top-1 mt-5 left-[90%] p-2"
                 onClick={() => setShowGallery(false)}
               >
                 <img
