@@ -3,7 +3,7 @@ import { useCart } from "../contexts/useCart";
 import CartItem from "./CartItem";
 
 const MiniCartModal = ({ closeModal }: { closeModal: () => void }) => {
-  const { cart, checkout } = useCart();
+  const { cart, checkout, itemsCounter } = useCart();
 
   const total = cart.reduce((acc, item) => acc + item.price * item.quantity, 0);
 
@@ -42,6 +42,7 @@ const MiniCartModal = ({ closeModal }: { closeModal: () => void }) => {
 
           <MainButton
             color="bg-checkout mx-auto mt-10"
+            disabled={!itemsCounter}
             onClick={() => {
               checkout();
             }}
