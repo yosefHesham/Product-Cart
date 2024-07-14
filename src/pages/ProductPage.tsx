@@ -9,11 +9,13 @@ import MainButton from "../components/MainButton";
 import ProductSlider from "../components/ProductSlider";
 import InfoTabs from "../components/InfoTabs";
 import DeliverySection from "../components/DeliverySection";
+import ProductsGallery from "../components/ProductsGallery";
 
 const ProductPage = () => {
   const [selectedColor, selectColor] = useState(product.colors[0]);
   const [selectedSize, selectSize] = useState(product.sizes[0]);
   const [quantity, setQuantity] = useState(1);
+  const [showGallery, setShowGallery] = useState(false);
   const selectedProduct = product;
   const productImage = `/assets/images/${selectedColor}-shirt.svg`;
   return (
@@ -35,12 +37,15 @@ const ProductPage = () => {
         </CircleWithData>
       </header>
 
-      <main className="mt-5 px-20">
-        <section className="flex xl:w-[80%]  mx-auto gap-12 justify-start">
+      <main className="pt-5 px-20 relative">
+        <section className="flex xl:w-[80%] 2xl:w-[60%] md:w-[90%]  sm:w-full  mx-auto gap-12 justify-start">
           <section className="flex-1">
             <img
               src={productImage}
               alt="shirt"
+              onClick={() => {
+                setShowGallery(true);
+              }}
               className=" w-full border border-iconBg rounded-[16px]"
             ></img>
             <div className="w-[380px] mt-8">
@@ -124,6 +129,23 @@ const ProductPage = () => {
         <section className="w-full">
           <InfoTabs />
         </section>
+
+        {showGallery && (
+          <div className="fixed w-full h-full flex items-center justify-center bg-black bg-opacity-65 top-0 left-0 z-10">
+            <div className="w-[80%] absolute mx-auto  bg-white">
+              <ProductsGallery
+                initialIndex={product.colors.indexOf(selectedColor)}
+                onSelect={(index) => {
+                  selectColor(product.colors[index]);
+                  setShowGallery(false);
+                }}
+                images={product.colors.map(
+                  (col) => `/assets/images/${col}-shirt.svg`
+                )}
+              />
+            </div>
+          </div>
+        )}
       </main>
     </>
   );
