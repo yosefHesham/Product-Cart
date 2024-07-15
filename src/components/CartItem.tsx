@@ -1,3 +1,4 @@
+import toast from "react-hot-toast";
 import { CartModel } from "../contexts/CartContext";
 import { useCart } from "../contexts/useCart";
 import { colorMap } from "../data";
@@ -7,10 +8,13 @@ interface Props {
 }
 
 const CartItem = ({ cart }: Props) => {
+  const notify = (message: string) => toast(message);
+
   const { updateQuantity, removeFromCart, updateCartCount, itemsCounter } =
     useCart();
 
   const handleRemoveFromCart = (color: string, size: string) => {
+    notify("Item has been removed");
     removeFromCart(color, size);
   };
 
@@ -20,12 +24,14 @@ const CartItem = ({ cart }: Props) => {
         if (cart.quantity < 15) {
           updateQuantity(cart.color, cart.size, cart.quantity + 1);
           updateCartCount(itemsCounter + 1);
+          notify("Item quantity has been increased");
         }
         break;
       case "-":
         if (cart.quantity > 1) {
           updateQuantity(cart.color, cart.size, cart.quantity - 1);
           updateCartCount(itemsCounter - 1);
+          notify("Item quantity has been decreased");
         }
         break;
     }

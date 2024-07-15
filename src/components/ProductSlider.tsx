@@ -55,6 +55,7 @@ const ProductSlider = ({ colors, selectedColor, onChange }: Props) => {
     >
       {colors.map((color, index) => (
         <div
+          key={index}
           className={`border-0 w-min outline-none mx-4 ${selectedColor === color ? "bg-gradient-to-br  from-shirts-selectedFrom to-shirts-selectedTo" : ""} rounded-[16px] flex justify-center items-center p-1`}
         >
           <img

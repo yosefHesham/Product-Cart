@@ -8,8 +8,9 @@ interface Props {
 const SizeSelector = ({ sizes, selectedSize, onChange }: Props) => {
   return (
     <div className="flex gap-2 items-center flex-wrap">
-      {sizes.map((size) => (
+      {sizes.map((size, index) => (
         <SizeItem
+          key={index}
           isSelected={selectedSize === size}
           size={size}
           onClick={onChange}

@@ -9,8 +9,9 @@ interface Props {
 const ColorSelector = ({ onChange, colors, selectedColor }: Props) => {
   return (
     <div className="flex gap-2 items-center">
-      {colors.map((color) => (
+      {colors.map((color, index) => (
         <ColorCircle
+          key={index}
           color={color}
           isSelected={color === selectedColor}
           onClick={onChange}

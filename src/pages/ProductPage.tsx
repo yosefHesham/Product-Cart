@@ -1,4 +1,6 @@
 import { useState } from "react";
+import toast, { Toaster } from "react-hot-toast";
+
 import CircleWithData from "../components/CircleWithData";
 import { colorMap, product, sizeToPrice } from "../data";
 import FeatureIcon from "../components/FeatureIcon";
@@ -21,6 +23,8 @@ const ProductPage = () => {
     brand: product.brand,
     quantity: 1,
   });
+
+  const notify = (message: string) => toast(message);
 
   const [showGallery, setShowGallery] = useState(false);
   const [showMiniCart, setShowMiniCart] = useState(false);
@@ -50,8 +54,9 @@ const ProductPage = () => {
       price: product.price + sizeToPrice[productState.selectedSize],
       quantity: productState.quantity,
     };
-
+    handleQuantityChange(1);
     addToCart(newItem);
+    notify("Item has been added to cart");
   };
 
   return (
@@ -193,8 +198,14 @@ const ProductPage = () => {
         )}
 
         {showGallery && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-65 top-0 left-0 z-10">
-            <div className="w-full sm:w-11/12 absolute mx-auto bg-white">
+          <div
+            onClick={() => setShowGallery(false)}
+            className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-65 top-0 left-0 z-10"
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              className="w-full sm:w-11/12 absolute mx-auto bg-white"
+            >
               <button
                 className="relative top-1 mt-5 left-[90%] p-2"
                 onClick={() => setShowGallery(false)}
@@ -223,6 +234,16 @@ const ProductPage = () => {
             </div>
           </div>
         )}
+        <Toaster
+          toastOptions={{
+            style: {
+              border: "1px solid white",
+              padding: "16px",
+              color: "#000000",
+              backgroundColor: "lightgreen",
+            },
+          }}
+        />
       </main>
     </>
   );
