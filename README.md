@@ -1,30 +1,53 @@
-# React + TypeScript + Vite
+# Product Cart
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Is a one page web app to show product details
 
-Currently, two official plugins are available:
+## Built With
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React
+- Typescript
+- Tailwind
+- Vite
 
-## Expanding the ESLint configuration
+![Alt text](/screenshot.png)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Live Demo (if available)
 
-- Configure the top-level `parserOptions` property like this:
+[Live Demo Link](https://product-cart-phi.vercel.app/)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
+## Getting Started
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+To get a local copy up and running follow these simple example steps.
+
+### Prerequisites
+
+- node and npm installed
+
+### Setup
+
+- clone the repo.
+- run npm i to install packages.
+
+### Running
+
+- npm run dev
+
+## Authors
+
+👤 **yosefHesham**
+
+- GitHub: [@yosefHesham](https://github.com/yosefHesham)
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome!
+
+Feel free to check the [issues page](../../issues/).
+
+## Show your support
+
+Give a ⭐️ if you like this project!
+
+## 📝 License
+
+This project is [MIT](./MIT.md) licensed.
