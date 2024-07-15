@@ -166,8 +166,9 @@ const ProductPage = () => {
               />
             </div>
 
-            <div className="  font-inter border-b py-4  justify-between lg:justify-center border-divider flex gap-3 items-center">
+            <div className="font-inter border-b py-4  justify-between lg:justify-center border-divider flex gap-3 items-center">
               <QuantityButton
+                classes="h-14 w-28 md:w-48"
                 quantity={productState.quantity}
                 onChange={handleQuantityChange}
               />
@@ -176,7 +177,7 @@ const ProductPage = () => {
                 title="Add to cart"
                 iconName="white-cart"
                 onClick={handleAddToCart}
-                classes="w-80 flex-1"
+                classes="flex-1"
               />
             </div>
             <div className="py-4 lg:flex w-full  mx-auto font-inter hidden gap-2 items-center">
