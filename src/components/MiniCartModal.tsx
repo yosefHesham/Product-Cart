@@ -41,11 +41,12 @@ const MiniCartModal = ({ closeModal }: { closeModal: () => void }) => {
           </div>
 
           <MainButton
-            color="bg-checkout mx-auto mt-10 w-56 sm:w-full"
+            color="bg-checkout "
             disabled={!itemsCounter}
             onClick={() => {
               checkout();
             }}
+            classes="mx-auto mt-10 w-full"
             iconName="white-cart"
             title="Checkout"
           />

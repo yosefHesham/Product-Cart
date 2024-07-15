@@ -5,6 +5,7 @@ interface Props {
   title: string;
   disabled?: boolean;
   disabledColor?: string;
+  classes?: string;
 }
 
 const MainButton = ({
@@ -12,6 +13,7 @@ const MainButton = ({
   iconName,
   color,
   onClick,
+  classes,
   disabled = false,
   disabledColor = "bg-gray-500",
 }: Props) => {
@@ -20,7 +22,7 @@ const MainButton = ({
     <button
       disabled={disabled}
       onClick={onClick}
-      className={`${color} ${disabled ? `${disabledColor}` : ""} rounded-[29px] flex justify-center gap-5 items-center w-80 h-14 text-white font-inter`}
+      className={`${color} ${disabled ? `${disabledColor}` : ""} rounded-[29px] flex justify-center gap-5 items-center ${classes} h-14 text-white font-inter`}
     >
       {icon && <img src={icon} alt={iconName} />}
       <p className="font-semibold font-inter text-[16px]">{title}</p>

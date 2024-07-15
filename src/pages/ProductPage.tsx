@@ -86,7 +86,7 @@ const ProductPage = () => {
               }}
               className="w-72 sm:w-4/6 md:w-[45%] lg:w-[85%] border mx-auto border-iconBg rounded-[16px] cursor-pointer"
             />
-            <div className="mt-8">
+            <div className="mt-8 flex justify-center items-center">
               <ProductSlider
                 colors={product.colors}
                 onChange={handleColorChange}
@@ -161,7 +161,7 @@ const ProductPage = () => {
               />
             </div>
 
-            <div className="  font-inter border-b py-4  justify-between lg:justify-center border-divider flex gap-2 items-center">
+            <div className="  font-inter border-b py-4  justify-between lg:justify-center border-divider flex gap-3 items-center">
               <QuantityButton
                 quantity={productState.quantity}
                 onChange={handleQuantityChange}
@@ -171,6 +171,7 @@ const ProductPage = () => {
                 title="Add to cart"
                 iconName="white-cart"
                 onClick={handleAddToCart}
+                classes="w-80 flex-1"
               />
             </div>
             <div className="py-4 lg:flex w-full  mx-auto font-inter hidden gap-2 items-center">

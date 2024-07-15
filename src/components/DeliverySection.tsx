@@ -16,7 +16,7 @@ const items = [
     children: (
       <p className="text-size font-sm">
         Free 30 days Delivery Return.
-        <span className="underline"> Details</span>
+        <span className="underline">Details</span>
       </p>
     ),
   },
